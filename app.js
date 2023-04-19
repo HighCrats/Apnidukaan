@@ -5,6 +5,7 @@ import ProductRouter from './route/product.route.js';
 import SubscriptionRoute from './route/subscription.route.js';
 import OrderRoute from './route/order.route.js';
 import LikeRoute from './route/like.route.js';
+import CartRoute from './route/cart.route.js';
 
 const app = express();
 
@@ -19,6 +20,8 @@ app.use("/order",OrderRoute);
 app.use("/like",LikeRoute);
 
 app.use("/subscription",SubscriptionRoute);
+
+app.use("/cart",CartRoute);
 
 app.listen(3010, () => {
     console.log("Server Started...");
