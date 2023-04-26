@@ -1,7 +1,7 @@
 import { validationResult } from "express-validator";
 import User from "../model/user.model.js";
 import bcrypt from "bcryptjs";
-import db from "../db/mongo.js";
+
 export const signIn = async (request,response,next) => {
     try {
         let user = await User.findOne({email:request.body.email});

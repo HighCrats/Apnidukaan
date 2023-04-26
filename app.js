@@ -9,6 +9,9 @@ import CartRoute from './route/cart.route.js';
 import UserRoute from './route/user.route.js';
 import CategoryRoute from './route/category.route.js';
 
+import Category from "../Admin/model/category.model.js";
+export default Category;
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -1,6 +1,6 @@
 import mongoose from "../db/dbConfig.js";
 
-const subscriptionSchema = new mongoose.Schema({
+const userSubscriptionSchema = new mongoose.Schema({
     usersId: {
         type: Number,
         required: true,
@@ -11,6 +11,6 @@ const subscriptionSchema = new mongoose.Schema({
     }   
 });
 
-const Subscription = mongoose.model('Subscription', subscriptionSchema);
+const userSubscription = mongoose.model('userSubscription', userSubscriptionSchema);
 
-export default Subscription;
+export default userSubscription;
