@@ -1,3 +1,5 @@
+import Category from "../app.js";
+
 export const list = (request,response)=>{
     Category.find()
     .then(result=>{

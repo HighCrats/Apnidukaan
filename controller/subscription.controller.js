@@ -1,4 +1,4 @@
-import Subscription from "../model/subscription.model.js";
+import Subscription from "../model/userSubscription.model.js";
 
 export const addSubscription = async (request, response, next) => {
     await Subscription.insertMany(request.body).then(result=>{
