@@ -1,4 +1,4 @@
-import mongoose from "../db/mongo.js";
+import mongoose from "../db/dbConfig.js";
 
 const shippingSchema = new mongoose.Schema({
     name: {
