@@ -1,5 +1,6 @@
 import express from "express";
 import { addStaff, saveAllStaff, getListOfStaff, removeStaff, updateStaff } from "../controller/staff.controller.js";
+import { body } from "express-validator";
 
 const router = express.Router();
 
