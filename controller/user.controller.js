@@ -8,7 +8,7 @@ export const signIn = async (request,response,next) => {
         if (user) {
             let status = await bcrypt.compare(request.body.password, user.password);
             if (status)
-                return response.status(200).json({ message: "Sign in success", status: true });
+                return response.status(200).json({ message: "Sign in success", status: true ,user});
             return response.status(400).json({ error: "Bad request", status: false });
         }
     }
