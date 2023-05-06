@@ -8,7 +8,7 @@ const userSubscriptionSchema = new mongoose.Schema({
     planId: {
         type: Number,
         required: true,
-    }   
+    }
 });
 
 const userSubscription = mongoose.model('userSubscription', userSubscriptionSchema);

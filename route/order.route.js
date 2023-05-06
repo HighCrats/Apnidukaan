@@ -4,10 +4,9 @@ import { orderSave, orderList } from "../controller/order.controller.js";
 const router = express.Router();
 
 //save order
-router.post("/save",orderSave);
+router.post("/save", orderSave);
 
 //show user order
-router.post("/myOrder",orderList);
-
+router.post("/myOrder", orderList);
 
 export default router;
