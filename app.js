@@ -7,8 +7,8 @@ import OrderRoute from './route/order.route.js';
 import CartRoute from './route/cart.route.js';
 import UserRoute from './route/user.route.js';
 import CategoryRoute from './route/category.route.js';
-
-import Category from "../MongoAdmin/model/category.model.js";
+import SellRoute from "./route/sell.route.js";
+import Category from "../apnidukanADMINBACKEND/model/category.model.js";
 export default Category;
 
 const app = express();
@@ -28,6 +28,8 @@ app.use("/cart",CartRoute);
 app.use("/user",UserRoute);
 
 app.use("/category",CategoryRoute);
+
+app.use("/sell",SellRoute); 
 
 app.listen(3010, () => {
     console.log("Server Started...");
