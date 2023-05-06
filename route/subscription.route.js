@@ -4,10 +4,6 @@ import { addSubscription } from "../controller/subscription.controller.js";
 const router = express.Router();
 
 //add subscription
-router.post("/addSubscription",addSubscription);
-
-//view subscription plans //we have to create inadmin
-//router.get("/viewSubscription",viewSubscription);
-
+router.post("/addSubscription", addSubscription);
 
 export default router;
