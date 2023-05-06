@@ -1,6 +1,9 @@
 import mongoose from "../db/dbConfig.js";
 
 const productSchema = new mongoose.Schema({
+    id: {
+        type: Number
+    },
     title: {
         type: String
     },
