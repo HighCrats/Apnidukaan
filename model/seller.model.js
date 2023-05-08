@@ -16,11 +16,7 @@ const sellerSchema = new mongoose.Schema({
   bill:{
     type:String,
     required:true
-  },
-  images: [{
-    data: Buffer,
-    contentType: String
-  }]
+  }
 });
 
 const Seller = mongoose.model('Seller', sellerSchema);
