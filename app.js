@@ -10,7 +10,7 @@ import UserRoute from './route/user.route.js';
 import CategoryRoute from './route/category.route.js';
 
 import SellRoute from "./route/sell.route.js";
-import Category from "../apnidukanADMINBACKEND/model/category.model.js";
+// import Category from "../apnidukanADMINBACKEND/model/category.model.js";
 
 import BuyNowRoute from './route/buyNow.js';
 
