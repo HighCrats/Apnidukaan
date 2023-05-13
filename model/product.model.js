@@ -1,6 +1,9 @@
-import mongoose from "../db/dbConfig.js";
+import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
+    id: {
+        type: Number
+    },
     title: {
         type: String
     },
@@ -30,3 +33,4 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model('Product', productSchema);
 
 export default Product;
+

@@ -1,4 +1,5 @@
 import { Cart } from "../model/cart.model.js";
+
 export const addToCart = async (request, response, next) => {
   try {
     let cart = await Cart.findOne({ userId: request.body.usersId });
@@ -24,8 +25,7 @@ export const addToCart = async (request, response, next) => {
 }
 
 export const cartData = async (request, response, next) => {
-  console.log("fetchCart is in Execution");
-  Cart.find({ userId: request.params.userId })
+  Cart.find({ userId: request.body.userId })
     .populate("cartItems.productId").then(result => {
       return response.status(200).json(result);
     }).catch(err => {
