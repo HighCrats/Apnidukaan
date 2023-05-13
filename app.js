@@ -10,15 +10,23 @@ import UserRoute from './route/user.route.js';
 import CategoryRoute from './route/category.route.js';
 
 import SellRoute from "./route/sell.route.js";
-// import Category from "../apnidukanADMINBACKEND/model/category.model.js";
 
-import BuyNowRoute from './route/buyNow.js';
 
-import Category from '../Admin/model/category.model.js';
+import path from "path";
+import {fileURLToPath} from 'url';
+
+
+import Category from "../adminBackend/model/category.model.js";
+import BuyNowRoute from './route/buyNow.router.js'
+
 
 export default Category;
 
 const app = express();
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+app.use(express.static(path.join(__dirname,"public/billImages"))); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -38,8 +46,7 @@ app.use("/user", UserRoute);
 
 app.use("/category", CategoryRoute);
 
-app.use("/sell",SellRoute); 
-
+app.use("/sell",SellRoute);
 app.listen(3010, () => {
     console.log("Server Started...");
 })
