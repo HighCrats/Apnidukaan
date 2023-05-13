@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const sellerSchema = new mongoose.Schema({
+const soldSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -14,9 +14,18 @@ const sellerSchema = new mongoose.Schema({
     required: true
   },
   bill:{
-    type:String
+    type:String,
+    required:true
+  },
+  pOne:{
+    type:String,
+    required:true
+  },
+  pTwo:{
+    type:String,
+    required:true
   }
 });
 
-const Seller = mongoose.model('Seller', sellerSchema);
+const Sold = mongoose.model('Sold', soldSchema);
 export default Seller;
