@@ -1,11 +1,8 @@
 import Order from "../model/order.model.js";
 
-
-
 export const buyNow = async (req, res) => {
   const { username, email, address, contact, date, paymentMode, totalAmount } = req.body;
   const userId = req.user._id;
-
   const order = new Order({
     username,
     email,

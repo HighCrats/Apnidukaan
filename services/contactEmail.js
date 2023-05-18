@@ -14,7 +14,7 @@ function email(email, subject, name) {
         from: 'harshitasisodiya94@gmail.com',
         to: email,
         subject: subject,
-        text: "Welcome in APNI DUKAAN" + name + "You are Successfully Registered."
+        text: "Welcome in APNI DUKAAN" + name + "Thanks for Your Contact , We had Successfully Recieved Your Message."
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
