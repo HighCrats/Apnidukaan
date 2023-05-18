@@ -17,10 +17,8 @@ export const sellProduct = async(request,response,next)=>{
         return response.status(500).json({ error: "Internal Server Error", status: false });
     }   
  }; 
-
  
  export const fetchProduct = (request, response, next) => {
-  console.log(request.body);
   Seller.find()
       .then(result => {
           return response.json({ status: true, result:result, message: "Product List" });

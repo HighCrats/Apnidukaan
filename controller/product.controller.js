@@ -23,7 +23,6 @@ export const addProduct = async (request, response, next) => {
 
 }
 
-
 export const productList = (request, response, next) => {
     let page = parseInt(request.query.page) || 1;
     let perPage = 10;
@@ -77,16 +76,14 @@ export const updateProduct = async (request, response, next) => {
         });
 }
 
-
 export const getProductByName = async (request, response, next) => {
     const categoryname = request.body.categoryname;
     try {
-      const result = await Product.find({ categoryname: categoryname.toLowerCase()}).limit(9);
-      console.log(result);
-      return response.json({ status: true, result, message: "Product List" });
+        const result = await Product.find({ categoryname: categoryname.toLowerCase() }).limit(10);
+        return response.json({ status: true, result, message: "Product List" });
     } catch (err) {
-      console.log(err);
-      return response.json({ error: "error", status: false });
+        console.log(err);
+        return response.json({ error: "error", status: false });
     }
-  };
-  
+};
+

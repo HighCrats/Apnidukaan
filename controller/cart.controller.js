@@ -8,7 +8,7 @@ export const addToCart = async (request, response, next) => {
         return response.status(200).json({ message: "product already added in cart", status: true })
       cart.cartItems.push({ productId: request.body.productId });
       let savedCart = await cart.save();
-      return response.status(200).json({ message: "Product successfull added in cart", status: true });
+      return response.status(200).json({ message: "Item added successfully", status: true });
     }
     else {
       let savedCart = await Cart.create({

@@ -1,8 +1,7 @@
 import express from "express";
-import { productList, addProduct, recentProduct, deleteProduct, myProduct, productDescription , updateProduct,  getProductByName } from "../controller/product.controller.js";
+import { productList, addProduct, recentProduct, deleteProduct, myProduct, productDescription, updateProduct, getProductByName } from "../controller/product.controller.js";
+
 const router = express.Router();
-
-
 
 //listing product
 router.get("/list", productList);
@@ -27,8 +26,5 @@ router.post("/myProduct", myProduct);
 
 //view product description
 router.post("/productDescription", productDescription);
-
-
-
 
 export default router;
