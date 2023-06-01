@@ -1,8 +1,8 @@
 import { validationResult } from "express-validator";
 import User from "../model/user.model.js";
 import bcrypt from "bcryptjs";
-import mail from '../services/email.js';
 import nodemailer from "nodemailer";
+import forgotPassword from "../services/forgotPassword.js";
 
 export const signIn = async (request, response, next) => {
     try {
@@ -38,37 +38,44 @@ export const signUp = async (request, response, next) => {
     }
 };
 
-export const forgotPassword = async (request, response, next) => {
+export const checkUser = async (request, response, next) => {
     try {
-        let user = await User.findOne({ email: request.body.email });
-        if (!user) {
-            return response.status(400).json({ error: "Bad request", message: "No user found" });
-        }
 
-        const resetUrl = `${request.protocol}://${request.get(
-            "host"
-        )}/reset-password`;
-
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'harshitasisodiya94@gmail.com',
-                pass: 'ucuskkfemmrbifir'
+        function generateOTP() {
+            var digits = "0123456789";
+            let OTP = "";
+            for (let i = 0; i < 4; i++) {
+                OTP += digits[Math.floor(Math.random() * 10)];
             }
-        });
-
-        const mailOptions = {
-            from: 'harshitasisodiya94@gmail.com',
-            to: user.email,
-            subject: "Request for Reset your Password",
-            text: `Hi ${user.name},\n\n Please click on the link to reset your password : \n\n${resetUrl}\n\n If you do not want to reset your password , ignore us.`,
+            return OTP;
         };
 
-        await transporter.sendMail(mailOptions);
-
-        return response.status(200).json({ message: "link sent successfully" });
-    } catch (error) {
-        console.log(error);
-        return response.status(500).json({ error: "Internal Server Error", status: false });
+        const data = await User.findOne({ email: request.body.email });
+        const OTP = await generateOTP();
+        let email = forgotPassword(request.body.email, "Forgott Password Change Related", data?.name, OTP);
+        if (email)
+            return response.status(200).json({ user: data, otp: OTP, status: true });
+        else
+            return response.status(400).json({ Message: "User is unauthorized", status: false });
     }
-};
+    catch (err) {
+        console.log(err);
+        return response.status(500).json({ message: 'Internal server error...', status: false });
+    }
+}
+
+export const updatePassword = async (request, response, next) => {
+    try {
+        console.log(request.body);
+        request.body.password = await bcrypt.hash(request.body.password, await bcrypt.genSalt(10));
+        const user = await User.findOneAndUpdate({ email: request.body.email }, { password: request.body.password });
+        console.log(user);
+        if (!user?.status)
+            return response.status(200).json({ Message: 'Password Updated success', status: true });
+        return response.status(400).json({ Message: 'Unauthorized User...', status: false });
+    }
+    catch (err) {
+        console.log(err);
+        return response.status(500).json({ Message: 'Internal Server Error...', status: false });
+    }
+}

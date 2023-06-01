@@ -1,6 +1,6 @@
 import express from "express";
 import { body } from "express-validator";
-import { forgotPassword, signIn, signUp } from "../controller/user.controller.js";
+import { checkUser, signIn, signUp, updatePassword } from "../controller/user.controller.js";
 
 const router = express.Router();
 
@@ -14,6 +14,8 @@ router.post("/signup",
     body("password", "password must have 5 letter at least").isLength({ min: 5 })
     , signUp);
 
-router.post('/forgot_password', forgotPassword);
+router.post('/checkUser',checkUser);
+
+router.post('/updatePassword',updatePassword);
 
 export default router;
