@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-function email(email, subject, name) {
+function forgotPassword(email, subject, name, otp) {
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -14,8 +14,7 @@ function email(email, subject, name) {
         from: 'harshitasisodiya94@gmail.com',
         to: email,
         subject: subject,
-        text: "Welcome in APNI DUKAAN" + name + "You are Successfully Registered."
-        
+        text: " Hey Dear, " + name + " This is the mail regarding to Your forgot password. " + " Your OTP is :- " + " " + otp
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -24,4 +23,4 @@ function email(email, subject, name) {
     return true;
 }
 
-export default email;
+export default forgotPassword;

@@ -10,6 +10,7 @@ import CategoryRoute from './route/category.route.js';
 import BuyNowRoute from './route/buyNow.router.js';
 import ContactRoute from './route/contact.route.js';
 import SellRoute from "./route/sell.route.js";
+import SmsRoute from './route/sms.route.js';
 import path from "path";
 import { fileURLToPath } from 'url';
 import Category from "../Admin/model/category.model.js";
@@ -38,6 +39,8 @@ app.use('/buyNow', BuyNowRoute);
 app.use("/user", UserRoute);
 
 app.use("/contactUser", ContactRoute);
+
+app.use("/smsUser",SmsRoute);
 
 app.use("/category", CategoryRoute);
 
