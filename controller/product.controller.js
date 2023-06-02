@@ -32,7 +32,7 @@ export const productList = (request, response, next) => {
         })
         .catch(err => {
             console.log(err);
-            return response.json({ error: err, status: false });
+            return response.json({ error: "error", status: false });
         });
 }
 
