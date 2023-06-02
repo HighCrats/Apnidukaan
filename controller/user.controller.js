@@ -3,6 +3,7 @@ import User from "../model/user.model.js";
 import bcrypt from "bcryptjs";
 import nodemailer from "nodemailer";
 import forgotPassword from "../services/forgotPassword.js";
+import email from "../services/email.js";
 
 export const signIn = async (request, response, next) => {
     try {
@@ -29,7 +30,7 @@ export const signUp = async (request, response, next) => {
         let encryptedPassword = await bcrypt.hash(request.body.password, saltKey);
         request.body.password = encryptedPassword;
         let user = await User.create(request.body);
-        mail(request.body.email, "From APNI DUKAAN", request.body.name)
+        email(request.body.email, "From APNI DUKAAN", request.body.name)
         return response.status(200).json({ user: user, status: true });
     }
     catch (err) {
@@ -52,7 +53,7 @@ export const checkUser = async (request, response, next) => {
 
         const data = await User.findOne({ email: request.body.email });
         const OTP = await generateOTP();
-        let email = forgotPassword(request.body.email, "Forgott Password Change Related", data?.name, OTP);
+        let email = forgotPassword(request.body.email, "Forgot Password Change Related", data?.name, OTP);
         if (email)
             return response.status(200).json({ user: data, otp: OTP, status: true });
         else

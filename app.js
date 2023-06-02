@@ -15,16 +15,23 @@ import path from "path";
 import { fileURLToPath } from 'url';
 import Category from "../Admin/model/category.model.js";
 export default Category;
+import cors from 'cors';
 
 const app = express();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, "public/billImages")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
+
+app.get('/', (req, res, next) => {
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+});
 
 app.use("/product", ProductRoute);
 
@@ -40,7 +47,7 @@ app.use("/user", UserRoute);
 
 app.use("/contactUser", ContactRoute);
 
-app.use("/smsUser",SmsRoute);
+app.use("/smsUser", SmsRoute);
 
 app.use("/category", CategoryRoute);
 
