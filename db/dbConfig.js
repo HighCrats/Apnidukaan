@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb+srv://harshitasisodiya:harshita2810@cluster0.wytrnkb.mongodb.net/apnidukaan?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://user1:user123@cluster0.wytrnkb.mongodb.net/apnidukaan?retryWrites=true&w=majority")
     .then(result => {
         console.log("Database Connected");
     })
