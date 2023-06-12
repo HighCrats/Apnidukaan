@@ -6,6 +6,9 @@ const router = express.Router();
 //listing product
 router.get("/list", productList);
 
+//all product
+router.post("/ListOfProduct",ListOfProduct)
+
 //limited product list
 router.get("/recent-product", recentProduct);
 
