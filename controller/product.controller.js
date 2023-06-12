@@ -10,6 +10,16 @@ export const recentProduct = (request, response, next) => {
         });
 }
 
+export const ListOfProduct = (request, response, next) => {
+    Product.find({categoryname : request.body.categoryname}).then(result => {
+            return response.json({ status: true, result, message: "Product List" });
+        })
+        .catch(err => {
+            console.log(err);
+            return response.json({ error: "error", status: false });
+        });
+}
+
 export const addProduct = async (request, response, next) => {
     try {
         for (let product of request.body.products) {
