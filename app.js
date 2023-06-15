@@ -8,6 +8,7 @@ import CategoryRoute from './route/category.route.js';
 import ContactRoute from './route/contact.route.js';
 import SellRoute from "./route/sell.route.js";
 import SmsRoute from './route/sms.route.js';
+import RequestRoute from "./route/request.route.js"
 import path from "path";
 import { fileURLToPath } from 'url';
 import cors from 'cors';
@@ -43,6 +44,8 @@ app.use("/smsUser", SmsRoute);
 app.use("/category", CategoryRoute);
 
 app.use("/sell", SellRoute);
+
+app.use("/request",RequestRoute);
 
 app.listen(3010, () => {
     console.log("Server Started...");
