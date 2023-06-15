@@ -36,6 +36,16 @@ export const productList = (request, response, next) => {
         });
 }
 
+export const ListOfProduct = (request, response, next) => {
+    Product.find({categoryname : request.body.categoryname}).then(result => {
+            return response.json({ status: true, result, message: "Product List" });
+        })
+        .catch(err => {
+            console.log(err);
+            return response.json({ error: "error", status: false });
+        });
+}
+
 export const deleteProduct = (request, response, next) => {
     Product.deleteOne(request.body).then(result => {
         return response.json({ message: "Deleted", status: true });

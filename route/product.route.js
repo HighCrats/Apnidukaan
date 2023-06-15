@@ -1,10 +1,13 @@
 import express from "express";
-import { productList, addProduct, recentProduct, deleteProduct, myProduct, productDescription, updateProduct, getProductByName, price } from "../controller/product.controller.js";
+import { productList, addProduct, recentProduct, deleteProduct, myProduct, productDescription, updateProduct, getProductByName, ListOfProduct ,price  } from "../controller/product.controller.js";
 
 const router = express.Router();
 
 //listing product
 router.get("/list", productList);
+
+//all product
+router.post("/listOfProduct",ListOfProduct)
 
 //limited product list
 router.get("/recent-product", recentProduct);
