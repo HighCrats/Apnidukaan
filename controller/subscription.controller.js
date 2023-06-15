@@ -1,6 +1,4 @@
-
 import Razorpay from "razorpay";
-// import shortid from "shortid";
 import shortid from "shortid";
 
 
@@ -36,3 +34,4 @@ export const addSubscription = async (req, res) => {
     console.log(error);
   }
 }
+

@@ -12,8 +12,6 @@ import RequestRoute from "./route/request.route.js"
 import path from "path";
 import { fileURLToPath } from 'url';
 import cors from 'cors';
-
-
 const app = express();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
