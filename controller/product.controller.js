@@ -87,3 +87,17 @@ export const getProductByName = async (request, response, next) => {
     }
 };
 
+
+export const price = async (request, response, next) => {
+    try {
+      const minPrice = request.body.minPrice;
+      const maxPrice = request.body.maxPrice;
+      console.log(maxPrice, minPrice);
+      let product = await Product.find({ price: { $gte: minPrice, $lte: maxPrice } });
+      console.log(books);
+      return response.status(200).json({ result: product, message: "book list" });
+    } catch (err) {
+      return response.status(500).json({ error: "Internal server error" });
+    }
+  };
+  

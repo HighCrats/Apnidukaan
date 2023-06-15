@@ -13,7 +13,7 @@ import SellRoute from "./route/sell.route.js";
 import SmsRoute from './route/sms.route.js';
 import path from "path";
 import { fileURLToPath } from 'url';
-import Category from "../Admin/model/category.model.js";
+import Category from "../adminBackend/model/category.model.js";
 export default Category;
 
 const app = express();
